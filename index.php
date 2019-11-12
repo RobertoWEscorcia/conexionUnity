@@ -1,5 +1,5 @@
 <?php
-	
+	//Open sans /betica no lite
 	//Se definen los recursos disponibles
 	$allowedResourceTypes = [
 		'tabla', 
@@ -14,7 +14,7 @@
 
 
 	header('Conyent-Type: application/json');
-	
+
 	$resourceId = array_key_exists('resource_id', $_GET) ? $_GET['resource_id'] : '';
 
 	//Se procesa la respuesta
