@@ -1,107 +1,23 @@
-<?php
+<?php 
 
+$matches = [];
 
-	//Se especifica que serán datos json
-	header('Conyent-Type: application/json');
-
-	if(
-		!array_key_exists('HTTP_X_HASH', $_SERVER) ||
-		!array_key_exists('HTTP_X_TIMESTAMP', $_SERVER) ||
-		!array_key_exists('HTTP_X_UID', $_SERVER)
-	)
-	{
-		header( 'Status-Code: 403');
-
-		echo json_encode(
-			[
-				'error' => 'No autorizado',
-			]
-		);
-
-		die;
-	}
-
-	list($hash, $uid, $timestamp) = [ $_SERVER['HTTP_X_HASH'], $_SERVER['HTTP_X_UID'], $_SERVER['HTTP_X_TIMESTAMP']];
-	$secret = "Frase secreta";
-	$new_hash = sha1($uid.$timestamp.$secret);
-
-	if($new_hash !== $hash)
-	{
-		header('Status-Code : 403');
-
-		echo json_encode(
-			[
-				'error' => 'No autorizado hash no valido',
-			]
-		)
-
-		die;
-	}
-
-	//Se definen los recursos disponibles
-	$allowed_resource_types = [
-		'tabla', 
-		'tabla2'
-	];
-
-	//Obtiene el tipo de recurso
-	$resource_type = $_GET['resorce_type'];
-
-	//Valida que el recurso solicitado este permitido
-	if(!in_array($resorce_type, $allowed_resource_types)) 
-	{
-		header('Status-Code : 400');
-
-		echo json_encode(
-			[
-				'error' => 'Recurso no valido',
-			]
-		)
-		
-		die;
-	}
-
+if(preg_match('/\/([^\/]+)\/([^\/]+)/', $_SERVER["REQUEST_URI"], $matches))
+{
+	$_GET['resource_type'] = $matches[1];
+	$_GET['resource_id'] = $matches[2];
+	error_log(print_r($matches, 1));
+	require 'server.php';
+} elseif (preg_match('/\/([^\/]+)\/?/', $_SERVER["REQUEST_URI"], $matches))
+{
+	$_GET['resource_type'] = $matches[1];
+	error_log(print_r($matches, 1));
+	require 'server.php';	
+}else
+{
+	echo "No matches";
+	error_log('No matches');
 	
+	//http_response_code(404);
+}
 
-	//
-	$resource_id = array_key_exists('resource_id', $_GET) ? $_GET['resource_id'] : '';
-
-	//Se procesa la respuesta
-	switch(strtoupper($_SERVER['REQUEST_METHOD']))
-	{
-		//Consultar
-		case 'GET':
-			//Muestra los datos solicitados desde la url
-			break;
-		//Agregar
-		case 'POST':
-			//Obtiene los datos json que vengan de la peticion
-			$json = file_get_contents('php://input');
-			//Agrega datos
-			
-			//Regresa el id del elemento guardado
-			
-			break;
-		//Modificar
-		case 'PUT':
-			//Verifica que tenga el id para modificar
-			if(!empty($resource_id))
-			{
-				//Obtiene los datos json de la peticion
-				$json = file_get_contents('php://input');
-				//Modifica los datos 
-				
-			}
-			break;
-		//Eliminar
-		case 'DELETE':
-			//verifica que tenga el id a eliminar
-			if(!empty($resource_id))
-			{
-				//Eliminar datos
-				
-			}
-			break;
-
-	}
-?>
