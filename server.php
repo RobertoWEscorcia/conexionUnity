@@ -60,7 +60,6 @@
 	$resource_type = $_GET['resource_type'];
 
 	//Valida que el recurso solicitado este permitido
-	
 	if(!in_array($resource_type, $allowed_resource_types)) 
 	{
 		header('Status-Code : 400');
@@ -83,6 +82,7 @@
 	{
 		//Consultar
 		case 'GET':
+			echo "GET";
 			//Muestra los datos solicitados desde la url
 			require("conexion.php");
 			require("get.php");
@@ -91,29 +91,34 @@
 		//Agregar
 		case 'POST':
 			//Obtiene los datos json que vengan de la peticion
-			$json = file_get_contents('php://input');
 			//Agrega datos
-			
+			require("conexion.php");
+			require("post.php");
+			require("cerrar.php");
+
 			//Regresa el id del elemento guardado
 			
 			break;
 		//Modificar
 		case 'PUT':
+			if(isset($_GET['resource_id']) && !empty($_GET['resource_id'])) { $resource_id = $_GET['resource_id']; }
 			//Verifica que tenga el id para modificar
 			if(!empty($resource_id))
 			{
 				//Obtiene los datos json de la peticion
 				$json = file_get_contents('php://input');
+				echo "put";
 				//Modifica los datos 
 				
 			}
 			break;
 		//Eliminar
 		case 'DELETE':
+			if(isset($_GET['resource_id']) && !empty($_GET['resource_id'])) { $resource_id = $_GET['resource_id']; }
 			//verifica que tenga el id a eliminar
 			if(!empty($resource_id))
 			{
-				//Eliminar datos
+				echo "DELETE";
 				
 			}
 			break;
