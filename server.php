@@ -44,12 +44,16 @@
 	}
 	*/
 
-	require("conexion.php");
+
 	
 	//Se definen los recursos disponibles
 	$allowed_resource_types = [
-		'conexion', 
-		'tabla2'
+		'mantenimiento', 
+		'maquinas',
+		'personal',
+		'usuarios',
+		'actividades_mantenimiento',
+		'actividades'
 	];
 
 	//Obtiene el tipo de recurso
@@ -80,7 +84,9 @@
 		//Consultar
 		case 'GET':
 			//Muestra los datos solicitados desde la url
-			
+			require("conexion.php");
+			require("get.php");
+			require("cerrar.php");
 			break;
 		//Agregar
 		case 'POST':
