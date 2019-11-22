@@ -82,7 +82,6 @@
 	{
 		//Consultar
 		case 'GET':
-			echo "GET";
 			//Muestra los datos solicitados desde la url
 			require("conexion.php");
 			require("get.php");
@@ -105,11 +104,7 @@
 			//Verifica que tenga el id para modificar
 			if(!empty($resource_id))
 			{
-				//Obtiene los datos json de la peticion
-				$json = file_get_contents('php://input');
-				echo "put";
-				//Modifica los datos 
-				
+					
 			}
 			break;
 		//Eliminar
@@ -118,7 +113,6 @@
 			//verifica que tenga el id a eliminar
 			if(!empty($resource_id))
 			{
-				echo "DELETE";
 				
 			}
 			break;

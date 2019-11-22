@@ -1,0 +1,12 @@
+//Logs de consultas a los web service
+//Organizacion
+//RUTA | METODO | IP | FECHA
+RUTA: /conexion/maquinas/ | METODO: GET | IP: ::1 | FECHA: 2019-11-21 21:10:27
+RUTA: /conexion/maquinas/ | METODO: GET | IP: ::1 | FECHA: 2019-11-21 14:11:43
+RUTA: /conexion/maquinasa/ | METODO: GET | IP: ::1 | FECHA: 2019-11-21 14:12:21
+RUTA: /conexion/actividades/ | METODO: DELETE | IP: ::1 | FECHA: 2019-11-21 14:12:35
+RUTA: /conexion/mantenimiento | METODO: GET | IP: 172.16.24.117 | FECHA: 2019-11-21 14:13:06
+RUTA: /conexion/actividades | METODO: GET | IP: ::1 | FECHA: 2019-11-21 14:13:44
+RUTA: /conexion/mantenimiento | METODO: GET | IP: 172.16.24.117 | FECHA: 2019-11-21 14:24:58
+RUTA: /conexion/actividades | METODO: GET | IP: 172.16.25.132 | FECHA: 2019-11-21 14:41:23
+RUTA: /conexion/actividades | METODO: GET | IP: ::1 | FECHA: 2019-11-22 09:48:46
