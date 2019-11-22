@@ -104,7 +104,9 @@
 			//Verifica que tenga el id para modificar
 			if(!empty($resource_id))
 			{
-					
+				require("conexion.php");
+				require("put.php");
+				require("cerrar.php");
 			}
 			break;
 		//Eliminar
@@ -113,7 +115,9 @@
 			//verifica que tenga el id a eliminar
 			if(!empty($resource_id))
 			{
-				
+				require "conexion.php";
+				require "delete.php";
+				require "cerrar.php";
 			}
 			break;
 
