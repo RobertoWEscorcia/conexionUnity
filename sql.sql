@@ -35,6 +35,8 @@ CREATE TABLE `mantenimiento` (
 	`id_personal` int(4) unsigned DEFAULT NULL,
 	`fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`fecha_proximo` date DEFAULT NULL,
+	`comentarios` text DEFAULT NULL,
+	`ayuda` text DEFAULT NULL,
 	PRIMARY KEY (`id_mantenimiento`)
 );
 
