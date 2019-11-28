@@ -23,7 +23,7 @@ else
 			$query = $query . "id_actividades = " . $data->id_actividades . ", id_mantenimiento = " . $data->id_mantenimiento .", realizado = " . $data->realizado;
 			break;
 		case 'mantenimiento':
-			$query = $query . "tipo = '" . $data->tipo . "', observaciones = '" . $data->observaciones . "', id_maquina = " . $data->id_maquinas . ", id_personal = " . $data->id_personal . ", fecha_proximo = '" . $data->fecha_proximo ."'";
+			$query = $query . "tipo = '" . $data->tipo . "', observaciones = '" . $data->observaciones . "', id_maquina = " . $data->id_maquinas . ", id_personal = " . $data->id_personal . ", fecha_proximo = '" . $data->fecha_proximo ."', comentarios = '" . $data->comentarios . "', ayuda = '" . $data->ayuda . "'";
 			break;
 		case 'maquinas':
 			$query = $query . "descripcion = '" . $data->descripcion . "', activo_fijo = '" . $data->activo_fijo . "'";

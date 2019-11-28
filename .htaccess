@@ -1,4 +1,4 @@
 RewriteEngine on
- RewriteCond %{REMOTE_ADDR} !^172.16.25.54
- RewriteCond %{REQUEST_URI} !/conexion/index.php$ [NC]
- RewriteRule .* /conexion/index.php [L]
+RewriteCond %{REMOTE_ADDR} !^172.16.25.54
+RewriteCond %{REQUEST_URI} !/conexion/index.php$ [NC]
+RewriteRule .* /conexion/index.php [L]

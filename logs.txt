@@ -78,3 +78,12 @@ RUTA: /conexion/actividades/2 | METODO: PUT | IP: 172.16.25.132 | FECHA: 2019-11
 RUTA: /conexion/actividades/1 | METODO: DELETE | IP: 172.16.25.132 | FECHA: 2019-11-22 17:23:38
 RUTA: /conexion/actividades | METODO: GET | IP: ::1 | FECHA: 2019-11-22 17:23:43
 RUTA: /conexion/actividades/2 | METODO: PUT | IP: ::1 | FECHA: 2019-11-22 17:28:17
+RUTA: /conexion/mantenimiento | METODO: GET | IP: 172.16.24.117 | FECHA: 2019-11-25 09:39:07
+RUTA: /conexion/actividades/1 | METODO: POST | IP: 172.16.25.132 | FECHA: 2019-11-25 11:32:10
+RUTA: /conexion/actividades/1 | METODO: GET | IP: 172.16.25.132 | FECHA: 2019-11-25 11:32:10
+RUTA: /conexion/actividades/2 | METODO: PUT | IP: 172.16.25.132 | FECHA: 2019-11-25 11:32:10
+RUTA: /conexion/actividades/1 | METODO: DELETE | IP: 172.16.25.132 | FECHA: 2019-11-25 11:32:10
+RUTA: /conexion/actividades | METODO: GET | IP: 172.16.25.132 | FECHA: 2019-11-25 11:32:13
+RUTA: /conexion/actividades | METODO: GET | IP: 172.16.25.132 | FECHA: 2019-11-25 11:34:38
+RUTA: /conexion/actividades | METODO: POST | IP: 172.16.25.132 | FECHA: 2019-11-25 11:37:21
+RUTA: /conexion/maquinas | METODO: POST | IP: 172.16.25.132 | FECHA: 2019-11-25 11:38:29
