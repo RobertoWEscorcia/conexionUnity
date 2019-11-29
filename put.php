@@ -26,7 +26,7 @@ else
 			$query = $query . "tipo = '" . $data->tipo . "', observaciones = '" . $data->observaciones . "', id_maquina = " . $data->id_maquinas . ", id_personal = " . $data->id_personal . ", fecha_proximo = '" . $data->fecha_proximo ."', comentarios = '" . $data->comentarios . "', ayuda = '" . $data->ayuda . "'";
 			break;
 		case 'maquinas':
-			$query = $query . "descripcion = '" . $data->descripcion . "', activo_fijo = '" . $data->activo_fijo . "'";
+			$query = $query . "descripcion = '" . $data->descripcion . "', activo_fijo = '" . $data->activo_fijo . "', imagen = '" . $data->imagen . "'";
 			break;
 		case 'personal':
 			$query = $query . "nombre = '" . $data->nombre . "', apellido_paterno = '" . $data->apellido_paterno . "', apellido_materno = '" . $data->apellido_materno . "'";

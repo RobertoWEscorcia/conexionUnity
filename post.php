@@ -27,7 +27,7 @@ else
 			$query = $query . "'" . $data->tipo . "', '" . $data->observaciones . "', " . $data->id_maquinas . ", " . $data->id_personal . ", null, '" . $data->fecha_proximo ."', '" . $data->comentarios . "', '" . $data->ayuda . "')";
 			break;
 		case 'maquinas':
-			$query = $query . "'" . $data->descripcion . "', '" . $data->activo_fijo . "')";
+			$query = $query . "'" . $data->descripcion . "', '" . $data->activo_fijo . "', '" . $data->imagen ."')";
 			break;
 		case 'personal':
 			$query = $query . "'" . $data->nombre . "', '" . $data->apellido_paterno . "', '" . $data->apellido_materno . "')";

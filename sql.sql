@@ -4,10 +4,11 @@ CREATE DATABASE conexion_unity;
 
 USE conexion_unity;
 
-CREATE TABLE maquinas (
+CREATE TABLE `maquinas` (
 	`id_maquina` int(4) unsigned NOT NULL AUTO_INCREMENT,
 	`descripcion` varchar(40) NOT NULL,
 	`activo_fijo` varchar(10) DEFAULT NULL,
+	`imagen` text DEFAULT "imagenes/default.jpg",
 	PRIMARY KEY (`id_maquina`)
 );
 
