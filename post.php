@@ -1,20 +1,20 @@
 <?php 
 
-$json = $_POST['data'];
-
+if(isset($_POST['data']) && !empty($_POST['data']))
+	$json = $_POST['data'];
+else
+	$json = file_get_contents('php://input');
 
 $data = json_decode($json);
-
+echo $resource_type;
 if($data === NULL){
 	echo "Error decodificando";
+
 }
 else
 {
 	
 	$query = "INSERT INTO " . $resource_type . " VALUES( null, " ;
-
-
-
 
 	switch ($resource_type) {
 		case 'actividades':
@@ -31,6 +31,7 @@ else
 			break;
 		case 'personal':
 			$query = $query . "'" . $data->nombre . "', '" . $data->apellido_paterno . "', '" . $data->apellido_materno . "')";
+			break;
 		case 'usuarios':
 			$query = $query . $data->id_personal .", '" . $data->password . "', " . $data->permisos . ")";
 		default:

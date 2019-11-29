@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Página ejemplo</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Hola!, bienvenid@ a la página de ejemplo para consumir los métodos</h1>
+	<p>Para el ejemplo utilizare la tabla personal: contiene los siguientes datos nombre, apellido paterno y apellido materno</p>
+
+	<form>
+		<h2>Agregar</h2>
+		<label>Nombre</label>
+		<input type="text" name="nombre" id="nombre">
+		<br />
+		<label>Apellido paterno</label>
+		<input type="text" name="aPaterno" id="aPaterno">
+		<br />
+		<label>Apellido Materno</label>
+		<input type="text" name="aMaterno" id="aMaterno">
+		<br />
+		<input type="button" name="enviar" value="Agregar" id="guardar">
+	</form>
+	<br />
+	<br />
+	<h2>Consultar</h2>
+	<table id="tabla" class="table">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Nombre</td>
+				<td>Apellido Paterno</td>
+				<td>Apellido Materno</td>
+			</tr>
+		</thead>
+		<tbody id= "tbody">	
+		</tbody>
+	</table>
+	<input type="button" value="Cargar" id="cargar">
+	<br />
+	<br />
+	<form>
+		<H2>Modificar</H2>
+		<label>ID</label>
+		<input type="text" name="id" id="id">
+		<br />
+		<label>Nombre</label>
+		<input type="text" name="nombre" id="nombrePut" disabled>
+		<br />
+		<label>Apellido paterno</label>
+		<input type="text" name="aPaterno" id="aPaternoPut" disabled>
+		<br />
+		<label>Apellido Materno</label>
+		<input type="text" name="aMaterno" id="aMaternoPut" disabled>
+		<br />
+		<input type="button" name="buscar" value="Buscar" id="buscar">
+		<input type="button" name="enviar" value="Modificar" id="modificar">
+	</form>
+	<br />
+	<br />
+	<br />
+	<form>
+		<h2>Eliminar</h2>
+		<label>Id</label>
+		<input type="text" name="id" id="idDelete">
+		<input type="button" name="Eliminar" value="Eliminar" id="eliminar">
+	</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$('#cargar').click( function(){
+		$.ajax({
+			'url' : 'http://172.16.25.54/conexion/personal/',
+			'success' : function( respuesta )
+			{
+				var objJson = JSON.parse(respuesta);
+				
+				//arreglar
+				$('#tabla #tbody').empty();
+
+				for ( b in objJson )
+				{
+					addData( objJson[b] );
+				}
+			}
+		});
+	});
+
+	$('#buscar').click( function(){
+
+		$.ajax({
+			'url' : 'http://172.16.25.54/conexion/personal/' + $('#id').val(),
+			'success' : function( respuesta )
+			{
+				var objJson = JSON.parse(respuesta);
+				
+				
+
+				for ( b in objJson )
+				{
+					escribir( objJson[b] );
+				}
+			}
+		});
+	});
+
+	$('#guardar').click( function(){
+		var data = {
+			
+			'nombre': $('#nombre').val(),
+			'apellido_paterno': $('#aPaterno').val(),
+			'apellido_materno': $('#aMaterno').val()
+			
+		};
+		console.log(JSON.stringify(data));
+		$.ajax({
+			'url' : 'http://172.16.25.54/conexion/personal/',
+			'type': 'POST',
+			'datatype': "json",
+			'data': JSON.stringify(data),
+			'success' : function( respuesta )
+			{
+				alert(respuesta);
+			}
+		});
+	});
+
+	$('#modificar').click( function(){
+		var data = {
+			
+			'nombre': $('#nombrePut').val(),
+			'apellido_paterno': $('#aPaternoPut').val(),
+			'apellido_materno': $('#aMaternoPut').val()
+			
+		};
+		console.log(JSON.stringify(data));
+		$.ajax({
+			'url' : 'http://172.16.25.54/conexion/personal/' + $('#id').val(),
+			'type': 'PUT',
+			'datatype': "json",
+			'data': JSON.stringify(data),
+			'success' : function( respuesta )
+			{
+				alert(respuesta);
+			}
+		});
+	});
+
+	$('#eliminar').click( function(){
+		
+		$.ajax({
+			'url' : 'http://172.16.25.54/conexion/personal/' + $('#idDelete').val(),
+			'type': 'DELETE',
+			'success' : function( respuesta )
+			{
+				alert(respuesta);
+			}
+		});
+	});
+
+	function addData( datos )
+	{
+		$('#tabla tr:last').after('<tr><td>' + datos.id_personal + '</td><td>' + datos.nombre + "</td><td>" + datos.apellido_paterno + "</td><td>" + datos.apellido_materno + "</td></tr>");
+	}
+	function escribir( datos )
+	{
+		document.getElementById("nombrePut").value= datos.nombre;
+		document.getElementById("aPaternoPut").value=datos.apellido_paterno;
+		document.getElementById("aMaternoPut").value=datos.apellido_materno;
+		document.getElementById("nombrePut").disabled = false;
+		document.getElementById("aPaternoPut").disabled = false;
+		document.getElementById("aMaternoPut").disabled = false;
+	}
+</script>
+</html>

@@ -30,6 +30,7 @@ else
 			break;
 		case 'personal':
 			$query = $query . "nombre = '" . $data->nombre . "', apellido_paterno = '" . $data->apellido_paterno . "', apellido_materno = '" . $data->apellido_materno . "'";
+			break;
 		case 'usuarios':
 			$query = $query . "id_personal = " .  $data->id_personal .", password = '" . $data->password . "', permisos = " . $data->permisos ;
 		default:

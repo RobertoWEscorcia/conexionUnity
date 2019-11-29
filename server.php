@@ -4,6 +4,7 @@
 
 	//Se especifica que serán datos json
 	header('Conyent-Type: application/json');
+	header('Access-Control-Allow-Origin: *');
 	/*
 
 	Autentificación
